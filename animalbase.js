@@ -18,7 +18,7 @@ function start() {
   // TODO: Add event-listeners to filter and sort buttons
   document.querySelector("[data-filter='cat']").addEventListener("click", filterCats);
   document.querySelector("[data-filter='dog']").addEventListener("click", filterDogs);
-  document.querySelector("[data-filter='*']").addEventListener("click", filterNone);
+  document.querySelector("[data-filter='*']").addEventListener("click", filterAll);
   loadJSON();
 }
 
@@ -36,11 +36,26 @@ function filterDogs() {
   displayList(onlyDogs);
 }
 
-// function to filter none
-function filterNone() {
-  console.log("filterNone");
-  const onlyAll = allAnimals.filter(isNone);
-  displayList(allAnimals);
+// function to filter All
+function filterAll() {
+  console.log("filterAll");
+  const onlyAll = allAnimals.filter(allCreaturesGreatAndSmall);
+  displayList(onlyAll);
+}
+
+function isCat(animal) {
+  console.log("isCat");
+  return animal.type === "cat";
+}
+
+function isDog(animal) {
+  console.log("isDog");
+  return animal.type === "dog";
+}
+
+function allCreaturesGreatAndSmall(animal) {
+  console.log("isAll");
+  return animal;
 }
 
 async function loadJSON() {
